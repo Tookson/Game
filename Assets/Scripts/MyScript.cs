@@ -5,13 +5,10 @@ using UnityEngine;
 
 public class MyScript : MonoBehaviour
 {
-    public Color color1 = Color.gray;
-    public Color color2 = Color.green;
-    public List<string> recentList;
 
     public Transform target;
     public Rigidbody targetRigidbody;
-    public int targetFrameRate = 60;
+    public int targetFrameRate = 30;
     public float jumpPower = 1f;
     public bool inJump;
 
@@ -51,29 +48,6 @@ public class MyScript : MonoBehaviour
         var horizontal = Input.GetAxis("Vertical");
         var vertical = Input.GetAxis("Horizontal");
         target.position += new Vector3(-vertical, 0, -horizontal);
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        string objName = other.name;
-        bool isVisited = recentList.Contains(objName);
-        Renderer renderer = other.GetComponent<Renderer>();
-        if (isVisited)
-        {
-            renderer.material.color = color2;
-        }
-        else
-        {
-            renderer.material.color = color1;
-        }
-
-        if (isVisited)
-        {
-            recentList.Remove(objName);
-        }
-        else
-        {
-            recentList.Add(objName);
-        }
     }
 
     void Respawn()
