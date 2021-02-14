@@ -1804,6 +1804,7 @@ GameObject:
   - component: {fileID: 2039395080}
   - component: {fileID: 2039395084}
   - component: {fileID: 2039395085}
+  - component: {fileID: 2039395086}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -1915,11 +1916,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbcff8960b0127d49857996cdeff37f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color1: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  color2: {r: 0, g: 1, b: 0, a: 1}
-  recentList: []
   target: {fileID: 2039395083}
   targetRigidbody: {fileID: 2039395084}
   targetFrameRate: 60
   jumpPower: 300
   inJump: 0
+--- !u!114 &2039395086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039395079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ea0c85c848c41d40b651a29246c4b80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color1: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  color2: {r: 0, g: 1, b: 0, a: 1}
+  color3: {r: 0, g: 0, b: 1, a: 1}
+  recentList: []
+  targetMaterial: {fileID: 2100000, guid: 904d51d527f1bcb478e1e6592b02ddc4, type: 2}
+  getMaterial: {fileID: 2100000, guid: f2c64a21cb2dfc644b4a4bbfd6482002, type: 2}
