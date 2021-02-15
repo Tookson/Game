@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45143133, g: 0.50075585, b: 0.57141066, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1937,5 +1937,15 @@ MonoBehaviour:
   color2: {r: 0, g: 1, b: 0, a: 1}
   color3: {r: 0, g: 0, b: 1, a: 1}
   recentList: []
-  targetMaterial: {fileID: 2100000, guid: 904d51d527f1bcb478e1e6592b02ddc4, type: 2}
-  getMaterial: {fileID: 2100000, guid: f2c64a21cb2dfc644b4a4bbfd6482002, type: 2}
+  Sphere: {fileID: 2039395079}
+  cubes:
+  - {fileID: 985737126}
+  - {fileID: 741563686}
+  - {fileID: 54931907}
+  - {fileID: 1817357938}
+  - {fileID: 706993257}
+  - {fileID: 59465116}
+  - {fileID: 1992411001}
+  - {fileID: 438923098}
+  - {fileID: 746026734}
+  - {fileID: 1194825657}
