@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
-    public float jumpForce = 5f;
+    public float jumpForce = 300f;
     private Rigidbody _rigidbody;
     private Vector2 _movementVector;
     private bool jump;
@@ -36,7 +36,8 @@ public class PlayerController : MonoBehaviour
             y = jumpForce;
             jump = false;
         }
-        Vector3 force = new Vector3(_movementVector.x, y, _movementVector.y) * speed;
-        _rigidbody.AddForce(force);
+        Vector3 force = new Vector3(_movementVector.x * speed, y, _movementVector.y * speed);
+        // _rigidbody.AddForce(force);
+        _rigidbody.velocity = new Vector3(_movementVector.x * speed, y, _movementVector.y * speed);
     }
 }
