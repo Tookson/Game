@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 public class Main : MonoBehaviour
@@ -22,12 +23,12 @@ public class Main : MonoBehaviour
             }
         }
 
-        var str = "";
+        var sb = new StringBuilder();
         foreach (var key in dict.Keys)
         {
-            str += $"{key}: {dict[key]}\n";
+            sb.AppendLine($"{key}: {dict[key]}");
         }
-        print(str);
+        print(sb.ToString());
     }
     
 }
