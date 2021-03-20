@@ -29,9 +29,9 @@ public class GameTimer : MonoBehaviour
     {
         switch (renderMode)
         {
-            //TODO: реализовать
+            case TimeRenderMode.MinSec: return SecondsToMinSec(totalSeconds);
+            case TimeRenderMode.HourMinSec: return SecondsToHourMinSec(totalSeconds);
         }
-
         return "--:--";
     }
 
@@ -45,7 +45,7 @@ public class GameTimer : MonoBehaviour
         }
     }
 
-    private string TimeToStrV1(int totalSeconds)
+    private string SecondsToMinSec(int totalSeconds)
     {
         int minutes = totalSeconds / 60;
         int seconds = totalSeconds % 60;
@@ -54,10 +54,15 @@ public class GameTimer : MonoBehaviour
         return $"{minStr}:{secStr}";
     }
 
-    private string TimeToStrV2(int totalSeconds)
+    private string SecondsToHourMinSec(int totalSeconds)
     {
-        TimeSpan time = TimeSpan.FromSeconds(totalSeconds);
-        return time.ToString("mm\\:ss");
+        int hours = ;
+        int minutes = ;
+        int seconds = ;
+        string hourStr = hours.ToString().PadLeft(2, '0');
+        string minStr = minutes.ToString().PadLeft(2, '0');
+        string secStr = seconds.ToString().PadLeft(2, '0');
+        return $"{hourStr}:{minStr}:{secStr}";
     }
     
     public enum TimerMode
