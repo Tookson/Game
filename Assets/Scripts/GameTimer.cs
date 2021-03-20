@@ -6,6 +6,8 @@ public class GameTimer : MonoBehaviour
 {
     public TimerMode mode = TimerMode.SinceStartOfTheGame;
     public TimeRenderMode renderMode = TimeRenderMode.MinSec;
+
+    public int constSeconds;
         
     private TMP_Text timerText;
 
@@ -14,6 +16,11 @@ public class GameTimer : MonoBehaviour
     void Start()
     {
         timerText = transform.GetComponentInChildren<TMP_Text>();
+        ResetTimer();
+    }
+
+    public void ResetTimer()
+    {
         _startTime = Time.time;
     }
 
@@ -41,6 +48,7 @@ public class GameTimer : MonoBehaviour
         {
             case TimerMode.SinceStartOfTheGame: return (int) Time.time;
             case TimerMode.SinceStartOfTheTimer: return (int) (Time.time - _startTime);
+            case TimerMode.FromConst: return constSeconds;
             default: return 0;
         }
     }
@@ -56,9 +64,12 @@ public class GameTimer : MonoBehaviour
 
     private string SecondsToHourMinSec(int totalSeconds)
     {
-        int hours = ;
-        int minutes = ;
-        int seconds = ;
+        // 2d 0h 24m 12s
+        //SecondsToMinSec - 2904:12 
+        //SecondsToHourMinSec - 48:24:12 
+        int hours = totalSeconds / 3600;
+        int minutes = totalSeconds % 3600 / 60;
+        int seconds = totalSeconds % 60;
         string hourStr = hours.ToString().PadLeft(2, '0');
         string minStr = minutes.ToString().PadLeft(2, '0');
         string secStr = seconds.ToString().PadLeft(2, '0');
@@ -69,6 +80,7 @@ public class GameTimer : MonoBehaviour
     {
         SinceStartOfTheGame,
         SinceStartOfTheTimer,
+        FromConst,
     }
 
     public enum TimeRenderMode
