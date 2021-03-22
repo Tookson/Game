@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: 8664574832292970726}
   - component: {fileID: 8664574832292970725}
   - component: {fileID: 8664574832292970724}
+  - component: {fileID: 409949048385629830}
   m_Layer: 0
   m_Name: Checkpoint
   m_TagString: Untagged
@@ -148,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameTimer: {fileID: 1820981413539883200}
+  flash: {fileID: 409949048385629830}
 --- !u!33 &8664574832292970726
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -210,6 +212,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.2866921, y: 1, z: 1}
   m_Center: {x: -0.007011175, y: 0, z: 0}
+--- !u!114 &409949048385629830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8664574832292970723}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e051417dd2a25a445bbec3cdd6f98238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 1820981414835674869}
+  moveTarget: {fileID: 8664574831678608396}
+  flashColor: {r: 0, g: 0, b: 1, a: 1}
+  targetDelta: {x: 0, y: 2, z: 0}
+  duration: 1
 --- !u!1001 &8664574832138727838
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -350,5 +369,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 746008edec161a54082a1c9141ba3637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1820981414835674869 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7024397253275381611, guid: 473c7becbd23f464a88d05249060c835,
+    type: 3}
+  m_PrefabInstance: {fileID: 8664574832138727838}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
