@@ -5,39 +5,61 @@ using UnityEngine;
 
 public class RecentList : MonoBehaviour
 {
-    public Color color1 = Color.gray;
-    public Color color2 = Color.green;
-    public Color color3 = Color.blue;
-    public List<string> recentList;
-    public virtual int Count { get; }
+    public Color[] colors = new Color[] {Color.gray, Color.green, Color.blue};
+
     public GameObject Sphere;
+
+    public GameObject[] cubes;
+
+    private Dictionary<string, CubeInfo> _cubes = new Dictionary<string, CubeInfo>();
+
+
+    private void Start()
+    {
+        foreach (var cube in cubes)
+        {
+            var info = new CubeInfo();
+            info.name = cube.name;
+            info.color = Color.white;
+            info.visitCount = 0;
+            _cubes[info.name] = info;
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         string objName = other.name;
-        bool isVisited = recentList.Contains(objName);
         Renderer renderer = other.GetComponent<Renderer>();
-        if (isVisited)
-        {
-            renderer.material.color = color2;
-        }
-        else
-        {
-            renderer.material.color = color1;
-        }
 
-        if (recentList.Count == 10) 
+        if (_cubes.TryGetValue(objName, out var info))
         {
-            Sphere.GetComponent<SpriteRenderer>().color = new Color(100, 100, 100, 100);
-        }
+            info.visitCount++;
 
-        if (isVisited)
-        {
-            recentList.Remove(objName);
+            info.color = colors[(info.visitCount - 1) % colors.Length];
+            renderer.material.color = info.color;
+
+            var baseColor = info.color;
+            var allColorsSame = true;
+            foreach (var cubeInfo in _cubes.Values)
+            {
+                if (cubeInfo.color != baseColor)
+                {
+                    allColorsSame = false;
+                    break;
+                }
+            }
+
+            if (allColorsSame)
+            {
+                Sphere.GetComponent<Renderer>().material.color = baseColor;
+            }
         }
-        else
-        {
-            recentList.Add(objName);
-        }
+    }
+
+    private class CubeInfo
+    {
+        public string name;
+        public Color color;
+        public int visitCount;
     }
 }

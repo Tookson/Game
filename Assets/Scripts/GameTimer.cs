@@ -7,6 +7,8 @@ public class GameTimer : MonoBehaviour
     public TimerMode mode = TimerMode.SinceStartOfTheGame;
     public TimeRenderMode renderMode = TimeRenderMode.MinSec;
 
+    public int constSeconds;
+        
     private TMP_Text timerText;
 
     private float _startTime;
@@ -14,7 +16,7 @@ public class GameTimer : MonoBehaviour
     void Start()
     {
         timerText = transform.GetComponentInChildren<TMP_Text>();
-        _startTime = Time.time;
+        ResetTimer();
     }
 
     public void ResetTimer()
@@ -29,7 +31,7 @@ public class GameTimer : MonoBehaviour
         int totalSeconds = GetSeconds();
         timerText.text = SecondsToString(totalSeconds);
     }
-
+    
     private string SecondsToString(int totalSeconds)
     {
         switch (renderMode)
@@ -44,8 +46,9 @@ public class GameTimer : MonoBehaviour
     {
         switch (mode)
         {
-            case TimerMode.SinceStartOfTheGame: return (int)Time.time;
-            case TimerMode.SinceStartOfTheTimer: return (int)(Time.time - _startTime);
+            case TimerMode.SinceStartOfTheGame: return (int) Time.time;
+            case TimerMode.SinceStartOfTheTimer: return (int) (Time.time - _startTime);
+            case TimerMode.FromConst: return constSeconds;
             default: return 0;
         }
     }
@@ -61,6 +64,9 @@ public class GameTimer : MonoBehaviour
 
     private string SecondsToHourMinSec(int totalSeconds)
     {
+        // 2d 0h 24m 12s
+        //SecondsToMinSec - 2904:12 
+        //SecondsToHourMinSec - 48:24:12 
         int hours = totalSeconds / 3600;
         int minutes = totalSeconds % 3600 / 60;
         int seconds = totalSeconds % 60;
@@ -69,11 +75,12 @@ public class GameTimer : MonoBehaviour
         string secStr = seconds.ToString().PadLeft(2, '0');
         return $"{hourStr}:{minStr}:{secStr}";
     }
-
+    
     public enum TimerMode
     {
         SinceStartOfTheGame,
         SinceStartOfTheTimer,
+        FromConst,
     }
 
     public enum TimeRenderMode
@@ -81,5 +88,5 @@ public class GameTimer : MonoBehaviour
         MinSec,     //00:00
         HourMinSec, //00:00:00
     }
-
+    
 }

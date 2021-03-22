@@ -24,6 +24,15 @@ public class MyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            int i = 0;
+            while (i < 10)
+            {
+                print(i);
+                i++;
+            }
+        }
         if (Input.GetKeyDown(KeyCode.Q))
         {
             Respawn();
@@ -45,9 +54,9 @@ public class MyScript : MonoBehaviour
             Debug.Log(targetRigidbody.velocity.magnitude);
         }
 
-        var horizontal = Input.GetAxis("Vertical");
-        var vertical = Input.GetAxis("Horizontal");
-        target.position += new Vector3(-vertical, 0, -horizontal);
+        // var horizontal = Input.GetAxis("Vertical");
+        // var vertical = Input.GetAxis("Horizontal");
+        // target.position += new Vector3(-vertical, 0, -horizontal);
     }
 
     void Respawn()
